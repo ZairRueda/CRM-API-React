@@ -9,9 +9,9 @@ const Layout = () => {
   const urlNow = location.pathname
 
   return (
-    <div className="md:flex md:min-h-screen">
+    <div className="md:flex md:max-h-screen">
 
-      <div className="md:w-1/4 bg-blue-700 px-5 py-10 mx-5 my-5 rounded-md shadow-2xl shadow-gray-700">
+      <div className="md:w-1/4 bg-blue-700 px-5 py-10 mx-5 my-5 rounded-md shadow-2xl shadow-blue-500">
         <h2 className="text-3xl font-black text-center text-white">CRM Clients</h2>
 
         <nav className="mt-10 p-5 bg-blue-500 rounded-md shadow-inner shadow-blue-600">
@@ -26,7 +26,7 @@ const Layout = () => {
         </nav>
       </div>
 
-      <div className="md:w-3/4 px-10 py-10 mx-5 my-5 rounded-md shadow-2xl shadow-gray-700 bg-white">
+      <div className=" px-10 py-10 mx-5 my-5 rounded-md bg-white md:w-3/4 ">
         <Outlet />
       </div>
 

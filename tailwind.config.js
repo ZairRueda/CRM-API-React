@@ -1,7 +1,8 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.jsx"
+    "./src/**/*.jsx",
+    "./src/pages/Index.jsx"
   ],
   theme: {
     extend: {},

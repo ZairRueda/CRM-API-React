@@ -1,9 +1,13 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+// React Router Dom Component
+import { useNavigate } from 'react-router-dom'
 // Import Yup
 import * as Yup from 'yup'
 
 const Formulary = () => {
+  
+  const navigate = useNavigate()
   
   // Schema for Yup
   const newClientSchema = Yup.object().shape({ 
@@ -22,8 +26,26 @@ const Formulary = () => {
       .required("The notes is required for identification purposes")
   })
 
-  const handleSubmit = (values) => {
-    console.log(values)
+  const handleSubmit = async (values) => {
+    try {
+      const url = 'http://localhost:4000/clients'
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      })
+      const json = await response.json()
+      console.log(json)
+
+      navigate('/clients')
+    } catch (error) {
+      console.error(error)
+    }
+    // More information about JsonServer https://www.npmjs.com/package/json-server
+
+
   }
 
   return (
@@ -39,107 +61,110 @@ const Formulary = () => {
           phone: '', 
           notes: ''
         }}
-        onSubmit={ (values) => {
-          handleSubmit(values)
+        onSubmit={ async (values, {resetForm}) => {
+          await handleSubmit(values)
+
+          resetForm()
         }}
         validationSchema={newClientSchema}
       >
-        {({errors})=> {console.log(errors)
-            return ( 
-          <Form className="mt-10">
-            {/* Name */}
-            <div>
+      {({errors})=> {
+        // In this case, we are using the Formik's Form component and is necessary return that component
+        return ( 
+            <Form className="mt-10">
+              {/* Name */}
+              <div>
 
-              <label 
-                className="block text-gray-700 text-base mb-2" 
-                htmlFor="name"
-              >Name:</label>
-              <Field 
-                id="name"
-                name="name" 
-                type="text" 
-                className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
-                placeholder="Client Name"
+                <label 
+                  className="block text-gray-700 text-base mb-2" 
+                  htmlFor="name"
+                >Name:</label>
+                <Field 
+                  id="name"
+                  name="name" 
+                  type="text" 
+                  className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
+                  placeholder="Client Name"
+                />
+                <ErrorMessage name="name" component="div" className="text-red-500 text-sm" />
+
+              </div>
+              {/* Factory */}
+              <div>
+
+                <label 
+                  className="block text-gray-700 text-base mb-2" 
+                  htmlFor="factory"
+                >Factoty Name:</label>
+                <Field 
+                  id="factory"
+                  name="factory"
+                  type="text" 
+                  className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
+                  placeholder="Client Factory"
+                />
+                <ErrorMessage name="factory" component="div" className="text-red-500 text-sm" />
+
+              </div>
+              {/* Email */}
+              <div>
+
+                <label 
+                  className="block text-gray-700 text-base mb-2" 
+                  htmlFor="email"
+                >Email:</label>
+                <Field 
+                  id="email"
+                  name="email" 
+                  type="email" 
+                  className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
+                  placeholder="Client Email"
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+
+              </div>
+              {/* Phone */}
+              <div>
+
+                <label 
+                  className="block text-gray-700 text-base mb-2" 
+                  htmlFor="phone"
+                >Phone:</label>
+                <Field 
+                  id="phone"
+                  name="phone" 
+                  type="phone" 
+                  className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
+                  placeholder="Client Phone"
+                />
+                <ErrorMessage name="phone" component="div" className="text-red-500 text-sm" />
+
+              </div>
+              {/* Notes */}
+              <div>
+
+                <label 
+                  className="block text-gray-700 text-base mb-2" 
+                  htmlFor="notes"
+                >Notes:</label>
+                <Field 
+                  id="notes"
+                  as="textarea"
+                  name="notes" 
+                  type="text" 
+                  className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full h-40 "
+                  placeholder="Client Notes"
+                />
+                <ErrorMessage name="notes" component="div" className="text-red-500 text-sm" />
+
+              </div>
+
+              <input 
+                type="submit" 
+                value="Add Client"
+                className="mt-5 w-full bg-blue-800 p-3 uppercase text-white font-bold text-lg rounded-md"
               />
-              <ErrorMessage name="name" component="div" className="text-red-500 text-sm" />
-
-            </div>
-            {/* Factory */}
-            <div>
-
-              <label 
-                className="block text-gray-700 text-base mb-2" 
-                htmlFor="factory"
-              >Factoty Name:</label>
-              <Field 
-                id="factory"
-                name="factory"
-                type="text" 
-                className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
-                placeholder="Client Factory"
-              />
-              <ErrorMessage name="factory" component="div" className="text-red-500 text-sm" />
-
-            </div>
-            {/* Email */}
-            <div>
-
-              <label 
-                className="block text-gray-700 text-base mb-2" 
-                htmlFor="email"
-              >Email:</label>
-              <Field 
-                id="email"
-                name="email" 
-                type="email" 
-                className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
-                placeholder="Client Email"
-              />
-              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-
-            </div>
-            {/* Phone */}
-            <div>
-
-              <label 
-                className="block text-gray-700 text-base mb-2" 
-                htmlFor="phone"
-              >Phone:</label>
-              <Field 
-                id="phone"
-                name="phone" 
-                type="phone" 
-                className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full "
-                placeholder="Client Phone"
-              />
-              <ErrorMessage name="phone" component="div" className="text-red-500 text-sm" />
-
-            </div>
-            {/* Notes */}
-            <div>
-
-              <label 
-                className="block text-gray-700 text-base mb-2" 
-                htmlFor="notes"
-              >Notes:</label>
-              <Field 
-                id="notes"
-                as="textarea"
-                name="notes" 
-                type="text" 
-                className="bg-gray-100 mx-1 my-1 py-2 px-2 rounded-md withe w-full h-40 "
-                placeholder="Client Notes"
-              />
-              <ErrorMessage name="notes" component="div" className="text-red-500 text-sm" />
-
-            </div>
-
-            <input 
-              type="submit" 
-              value="Add Client"
-              className="mt-5 w-full bg-blue-800 p-3 uppercase text-white font-bold text-lg rounded-md"
-            />
-          </Form>
+            </Form>
         )}}
       </Formik>
 

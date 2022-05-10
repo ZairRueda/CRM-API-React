@@ -1,3 +1,60 @@
 {
-  "clients" : []
+  "clients": [
+    {
+      "id": 1,
+      "name": "Andres ",
+      "factory": "Zair ",
+      "email": "correo@correo.com",
+      "phone": "5774383900",
+      "notes": "Very Nice Client"
+    },
+    {
+      "name": "Andres ",
+      "factory": "Zair ",
+      "email": "correo@correo.com",
+      "phone": "5774383900",
+      "notes": "Very Nice Client",
+      "id": 2
+    },
+    {
+      "name": "Manuel",
+      "factory": "Elementari",
+      "email": "correo2@correo2.com",
+      "phone": "5774383800",
+      "notes": "That's a nice client but so piqui",
+      "id": 3
+    },
+    {
+      "name": "Karina",
+      "factory": "TopTalk",
+      "email": "naiceMail@mail.com",
+      "phone": "7489390202",
+      "notes": "Higt Quality",
+      "id": 4
+    },
+    {
+      "name": "karen ",
+      "factory": "Diseño con karen ",
+      "email": "karenMedina@correo.com",
+      "phone": "8484762901",
+      "notes": "Karen is seen the cost ",
+      "id": 5
+    },
+    {
+      "name": "Manuel",
+      "factory": "Mmanufacturing",
+      "email": "correomanuel@correo.com",
+      "phone": "5774383000",
+      "notes": "he need 300 pencil",
+      "id": 6
+    },
+    {
+      "name": "Karolina",
+      "factory": "Kstyle",
+      "email": "correoKstyle@correo.com",
+      "phone": "8484572901",
+      "notes": "          ",
+      "id": 7
+    }
+  ]
 }

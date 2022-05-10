@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Router } from 'react-router-dom'
 import Layout from './layout/Layout'
-import Index from './pages'
+import Index from './pages/Index'
 import NewClient from './pages/NewClient'
 import EditClient from './pages/EditClient'
+import SeeClient from './pages/SeeClient'
 
 function App() {
   
@@ -40,6 +41,9 @@ function App() {
           <Route path="newClient" element={<NewClient/>} />
 
           <Route path="editClient/:id" element={<EditClient/>} />
+
+          <Route path=":id" element={<SeeClient/>} />
+
         </Route>
       </Routes>
     </BrowserRouter>

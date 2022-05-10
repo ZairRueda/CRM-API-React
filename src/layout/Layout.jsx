@@ -9,7 +9,7 @@ const Layout = () => {
   const urlNow = location.pathname
 
   return (
-    <div className="md:flex md:max-h-screen">
+    <div className="md:flex md:h-screen">
 
       <div className="md:w-1/4 bg-blue-700 px-5 py-10 mx-5 my-5 rounded-md shadow-2xl shadow-blue-500">
         <h2 className="text-3xl font-black text-center text-white">CRM Clients</h2>

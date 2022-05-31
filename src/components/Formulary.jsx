@@ -32,7 +32,7 @@ const Formulary = ({client, loading}) => {
 
       if (client.id) {
         // Edit Register
-        const url = `http://localhost:4000/clients/${client.id}`
+        const url = `${import.meta.env.VITE_DB_HOST}/${client.id}`
         response = await fetch(url, {
           method: 'PUT',
           headers: {
@@ -42,7 +42,7 @@ const Formulary = ({client, loading}) => {
         })
       } else {
         // New Register
-        const url = 'http://localhost:4000/clients'
+        const url = `${import.meta.env.VITE_DB_HOST}`
         response = await fetch(url, {
           method: 'POST',
           headers: {

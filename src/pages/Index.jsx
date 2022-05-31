@@ -9,7 +9,7 @@ const Index = () => {
   
     const getClientsApi = async () => {
       try {
-        const url = 'http://localhost:4000/clients'
+        const url = `${import.meta.env.VITE_DB_HOST}`
         const response = await fetch(url)
         const json = await response.json()
         setClients(json)
@@ -26,7 +26,7 @@ const Index = () => {
       // ask for confirmation
       const response = window.confirm('Are you sure?')
       if (response) {
-        const url = `http://localhost:4000/clients/${id}`
+        const url = `${import.meta.env.VITE_DB_HOST}/${id}`
         const response = await fetch(url, {
           method: 'DELETE'
         })

@@ -26,7 +26,7 @@ const Layout = () => {
         </nav>
       </div>
 
-      <div className=" px-10 py-10 mx-5 my-5 rounded-md bg-white md:w-3/4 ">
+      <div className=" px-10 pt-10 mx-5 my-5 rounded-md bg-white md:w-3/4 ">
         <Outlet />
       </div>
 

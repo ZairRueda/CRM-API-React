@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-const Clients = ({client}) => {
+const Clients = ({client, handleDelete}) => {
   const navigate = useNavigate()
 
   const {id, name, phone, email, factory, notes} = client
@@ -15,15 +15,16 @@ const Clients = ({client}) => {
       <td className="p-3 ">{factory}</td>
       <td className="p-3">
         <button 
-        className="bg-green-500 hover:bg-green-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
-        onClick={() => navigate(`/clients/${id}`)}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
+          onClick={() => navigate(`/clients/${id}`)}
         >See</button>
         <button 
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
-        
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
+          onClick={() => navigate(`/clients/editClient/${id}`)}
         >Edit</button>
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
-        
+        <button 
+          className="bg-red-500 hover:bg-red-700 text-white font-bold m-1 py-2 px-4 rounded uppercase"
+          onClick={() => handleDelete(id)}
         >Delete</button>
       </td>
     </tr>

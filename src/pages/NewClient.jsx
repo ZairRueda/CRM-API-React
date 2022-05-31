@@ -1,4 +1,3 @@
-import React from 'react'
 import Formulary from '../components/Formulary'
 
 const NewClient = () => {

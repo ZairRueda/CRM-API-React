@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Router } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route, Router, Navigate } from 'react-router-dom'
 import Layout from './layout/Layout'
 import Index from './pages/Index'
 import NewClient from './pages/NewClient'
